@@ -1,0 +1,20 @@
+---
+import educations from '@assets/educations'
+---
+
+<div>
+    <h3>Educations</h3>
+    {educations.educations.map((edu) => (
+        <div>
+            <div class="font-medium">
+                {edu.title}
+            </div>
+            <div class="text-slate-500">
+                <ul>
+                    <li>{edu.school}</li>
+                    <li>{edu.date}</li>
+                </ul>
+            </div>
+        </div>
+    ))}
+</div>

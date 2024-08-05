@@ -1,0 +1,21 @@
+---
+import experience from '@assets/experience'
+---
+
+<div>
+    <h3>Experience</h3>
+    {experience.experience.map((exp) => (
+        <div>
+            <div class="font-medium">
+                {exp.title} ({exp.date})
+            </div>
+            <div class="text-slate-500">
+                <ul>
+                    <li>{exp.description} from {exp.company}</li>
+                    <li>Skill set: {exp.skill}</li>
+                </ul>
+            
+            </div>
+        </div>
+    ))}
+</div>

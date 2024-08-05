@@ -1,0 +1,14 @@
+---
+import award from '@assets/award'
+---
+
+<div>
+    <h3>Awards</h3>
+    <ul>
+        {award.award.map((awa) => (
+            <li>
+                {awa.title} ({awa.date}) from {awa.organization}
+            </li>
+        ))}
+    </ul>
+</div>

@@ -1,0 +1,18 @@
+---
+import publications from '@assets/publication'
+---
+
+<div>
+    <h3>Publications</h3>
+    {publications.publications.map((pub) => (
+        <div>
+            <div class="font-medium">
+                {pub.title} ({pub.year})
+            </div>
+            <div class="text-slate-500">
+                {pub.conference}
+                {pub.authors} 
+            </div>
+        </div>
+    ))}
+</div>
