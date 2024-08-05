@@ -2,8 +2,8 @@ const experience = [
     {
         title: "Student Research Intern",
         company: "DS Lab @ POSTECH",
-        date: "2023.3 ~ 2023.8",
-        description: "Multi-Vector Query Processing in Vector Database (especially in Milvus)",
+        date: "2024.3 ~ 2024.8",
+        description: "Multi-Vector Query (like ColBERT) Processing in Vector Database (especially in Milvus)",
         skill: "Git, C++, Docker, Go"
     },
     {
