@@ -1,6 +1,13 @@
 const experience = [
     {
-        title: "Student Research Intern",
+        title: "Graduate Researcher",
+        company: "DS Lab @ POSTECH",
+        date: "2025.1 ~ 2025.12",
+        description: "Workload-Aware DiskANN for ANNS [(github)](https://github.com/hyojeongyunn/workload-aware-diskann), (This work was supported by IITP, 'Developing a Vector DB for Long-Term Memory Storage of Hyperscale AI Models')",
+        skill: "Git, C++, Docker"
+    },
+    {
+        title: "Undergraduate Research Intern",
         company: "DS Lab @ POSTECH",
         date: "2024.3 ~ 2024.8",
         description: "Multi-Vector Query (ColBERT-style) Processing in Vector Database (especially in Milvus) [(github)](https://github.com/hyojeongyunn/milvus-agg-bulk-vec-design)",
@@ -19,13 +26,6 @@ const experience = [
         date: "2023.6 ~ 2023.9",
         description: "Learning-based Cost Estimation (Implementing CLEO in GPORCA)",
         skill: "Git, C++, Python"
-    },
-    {
-        title: "Undergraduate Teaching Assistant",
-        company: "POSTECH Institute of Artificial Intelligence (PIAI)",
-        date: "2022.2 ~ 2022.12",
-        description: "Undergraduate TA for 'Introduction to Artificial Intelligence' course",
-        skill: "Python, Pytorch"
     },
     {
         title: "Student Research Intern",

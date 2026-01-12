@@ -1,0 +1,28 @@
+---
+import teaching from '@assets/teaching'
+import { marked } from 'marked'
+
+marked.setOptions({ breaks: true })
+
+const renderInlineMd = (md) => marked.parseInline(md ?? '')
+---
+
+<div>
+    <h3>Teaching</h3>
+    {teaching.teaching.map((tea) => (
+        <div>
+            <div class="font-medium">
+                {tea.title} ({tea.date})
+            </div>
+            <div class="text-slate-500">
+                <ul>
+                    <li>
+                        <span set:html={renderInlineMd(tea.description)} />
+                        {tea.company && <> {' '}from {tea.company}</>}
+                    </li>
+                </ul>
+            
+            </div>
+        </div>
+    ))}
+</div>
