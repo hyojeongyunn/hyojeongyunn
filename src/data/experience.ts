@@ -3,14 +3,14 @@ export default [
         title: "Team Lead",
         org: "Team Nutcrackers",
         date: "2026.04 – Present",
-        description: "Leading the development of [Darami](https://github.com/Team-Nutcrackers/darami), an AI agent that guides people through public-service procedures for life events such as moving, childbirth, and leaving a job. Finalist in the [AI Champion Competition](https://ai-champion.or.kr/) hosted by Korea's Ministry of Science and ICT, with USD 4,000 in funding.",
+        description: "Leading the development of [Darami](https://github.com/Team-Nutcrackers/darami), an AI agent that guides people through public-service procedures for life events such as moving, childbirth, and leaving a job. Finalist in the AI Champion Competition hosted by Korea's Ministry of Science and ICT (USD 4,000).",
     },
     {
         title: "Graduate Researcher",
         org: "DS Lab @ POSTECH",
         date: "2024.09 – 2026.09",
         projects: [
-            "Evidence compression for multimodal RAG, resulting in the [CANOPY](https://arxiv.org/abs/2610.00923) preprint.",
+            "Conducted research on evidence compression for multimodal RAG, released on arXiv.",
             "Cross-modal approximate nearest neighbor search.",
         ],
     },
@@ -24,6 +24,6 @@ export default [
         title: "Student Research Intern",
         org: "ML Lab @ POSTECH",
         date: "2022.02 – 2022.06",
-        description: "Conducted research on machine unlearning, resulting in a [paper](https://arxiv.org/abs/2205.15567) accepted at IEEE S&P 2024.",
+        description: "Conducted research on machine unlearning, published at IEEE S&P 2024.",
     },
 ]

@@ -1,7 +1,7 @@
 export default [
     {
         title: "CANOPY: Adaptive-Granularity Evidence Compression for Multimodal RAG",
-        authors: ["H Yun", "J Kim", "W Han"],
+        authors: ["H Yun*", "J Kim*", "W Han"],
         venue: "arXiv preprint arXiv:2610.00923",
         tag: "Preprint 2026",
         links: [
