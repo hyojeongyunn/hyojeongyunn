@@ -1,32 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import News from '@components/news.astro'
-import Publications from '@components/publications.astro'
-import Educations from '@components/educations.astro'
-import Experiences from '@components/experiences.astro'
-import Contact from '@components/contact.astro'
-import Awards from '@/components/awards.astro'
+import Layout from '@/layouts/Layout.astro'
+import Section from '@/components/section.astro'
+import About from '@/components/about.astro'
+import News from '@/components/news.astro'
+import Publications from '@/components/publications.astro'
+import Experience from '@/components/experience.astro'
 import Teaching from '@/components/teaching.astro'
-import Bar from '@components/bar.astro'
+import Education from '@/components/education.astro'
+import Awards from '@/components/awards.astro'
 ---
 
-<Layout title="HyoJeong Yun">
-	<article class="prose mx-auto">
-		<h1>HyoJeong Yun</h1>
-		<p>Interested in vector database and multi-modal embeddings.</p>
-		<Bar/>
-		<Contact/>
-		<Bar/>
-		<News/>
-		<Bar/>
-		<Publications/>
-		<Bar/>
-		<Educations/>
-		<Bar/>
-		<Awards/>
-		<Bar/>
-		<Experiences/>
-		<Bar/>
-		<Teaching/>
-	</article>
+<Layout title="Hyojeong Yun">
+    <About />
+    <Section id="news" title="News"><News /></Section>
+    <Section id="publications" title="Publications"><Publications /></Section>
+    <Section id="experience" title="Experience">
+        <Experience />
+        <Teaching />
+    </Section>
+    <Section id="education" title="Education">
+        <Education />
+        <Awards />
+    </Section>
 </Layout>

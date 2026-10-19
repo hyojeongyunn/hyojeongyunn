@@ -1,16 +1,18 @@
 ---
-import award from '@assets/award'
+import awards from '@/data/awards'
+import Subsection from '@/components/subsection.astro'
+import Entry from '@/components/entry.astro'
 ---
 
-<div>
-    <h3>Awards</h3>
-    <ul>
-        {award.award.map((awa) => (
-            <li>
-                {awa.title} ({awa.date}) from {awa.organization}:
-                <br/>
-                {awa.description}
-            </li>
+<Subsection title="Honors & Awards">
+    <ul class="space-y-6">
+        {awards.map((item) => (
+            <Entry date={item.date}>
+                <h4 class="font-medium text-neutral-900">
+                    {item.title}<span class="font-normal text-neutral-500"> · {item.org}</span>
+                </h4>
+                <p class="mt-1 text-sm leading-relaxed text-neutral-500">{item.description}</p>
+            </Entry>
         ))}
     </ul>
-</div>
+</Subsection>

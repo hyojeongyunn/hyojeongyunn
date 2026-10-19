@@ -1,0 +1,14 @@
+---
+import education from '@/data/education'
+import Entry from '@/components/entry.astro'
+---
+
+<ul class="space-y-5">
+    {education.map((item) => (
+        <Entry date={item.date}>
+            <h3 class="font-medium text-neutral-900">{item.title}</h3>
+            <p class="mt-0.5 text-sm text-neutral-500">{item.school}</p>
+            <p class="mt-0.5 text-sm text-neutral-500">{item.note}</p>
+        </Entry>
+    ))}
+</ul>

@@ -1,0 +1,31 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Entry from '@/components/entry.astro'
+import { getPosts, formatDate } from '@/lib/blog'
+import { url } from '@/lib/site'
+
+const posts = await getPosts()
+---
+
+<Layout title="Blog · Hyojeong Yun">
+    <h1 class="sr-only">Blog</h1>
+    <section class="pb-12 pt-12 sm:pt-20">
+        {posts.length === 0 ? (
+            <p class="text-[15px] text-neutral-500">No posts yet.</p>
+        ) : (
+            <ul class="space-y-8">
+                {posts.map((post) => (
+                    <Entry date={formatDate(post.data.date)}>
+                        <a href={url(`blog/${post.slug}/`)} class="group block">
+                            <h2 class="font-medium leading-snug text-neutral-900 transition-colors group-hover:text-neutral-500">
+                                {post.data.title}
+                                {post.data.draft && <span class="ml-2 align-middle text-xs font-normal text-neutral-400">draft</span>}
+                            </h2>
+                            <p class="mt-1 text-[15px] leading-relaxed text-neutral-600">{post.data.description}</p>
+                        </a>
+                    </Entry>
+                ))}
+            </ul>
+        )}
+    </section>
+</Layout>

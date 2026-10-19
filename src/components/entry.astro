@@ -1,0 +1,12 @@
+---
+interface Props { date?: string }
+
+const { date } = Astro.props
+---
+
+<li class="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
+    <div class="pt-0.5 text-sm tabular-nums text-neutral-400">
+        <slot name="aside">{date}</slot>
+    </div>
+    <div><slot /></div>
+</li>

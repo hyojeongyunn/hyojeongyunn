@@ -1,24 +1,111 @@
 ---
-interface Props {
-	title: string;
-}
+import Nav from '@/components/nav.astro'
+import { url } from '@/lib/site'
 
-const { title } = Astro.props;
+interface Props { title: string; description?: string }
+
+const { title, description = 'Hyojeong Yun — graduate researcher at DS Lab, POSTECH.' } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Re" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="hyojeongyunn/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<div class="px-auto my-10">
-			<slot />
-		</div>
-	</body>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={description} />
+        <title>{title}</title>
+        <link rel="icon" href={url('favicon.ico')} sizes="32x32" />
+        <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+        <script is:inline>
+            {
+                let saved
+                try { saved = localStorage.theme } catch {}
+                document.documentElement.classList.toggle('dark', saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches)
+            }
+        </script>
+    </head>
+    <body class="bg-page font-sans text-neutral-800 antialiased">
+        <Nav />
+        <main class="mx-auto max-w-[50rem] px-6">
+            <slot />
+        </main>
+        <footer class="mx-auto max-w-[50rem] px-6">
+            <div class="flex flex-col gap-1 border-t border-neutral-200 py-10 text-sm text-neutral-400 sm:flex-row sm:justify-between">
+                <span>© {new Date().getFullYear()} Hyojeong Yun</span>
+                <span>Last updated October 2026</span>
+            </div>
+        </footer>
+    </body>
 </html>
+
+<style is:global>
+    :root {
+        color-scheme: light;
+        --page: 255 255 255;
+        --neutral-100: 245 245 245;
+        --neutral-200: 229 229 229;
+        --neutral-300: 212 212 212;
+        --neutral-400: 163 163 163;
+        --neutral-500: 115 115 115;
+        --neutral-600: 82 82 82;
+        --neutral-700: 64 64 64;
+        --neutral-800: 38 38 38;
+        --neutral-900: 23 23 23;
+        --accent: 131 106 33;
+        --accent-soft: 251 244 220;
+        --highlight: rgb(247 233 181);
+        --highlight-text: rgb(23 23 23);
+        --selection: rgb(247 233 181);
+    }
+    .dark {
+        color-scheme: dark;
+        --page: 17 17 17;
+        --neutral-100: 32 32 32;
+        --neutral-200: 46 46 46;
+        --neutral-300: 82 82 82;
+        --neutral-400: 120 120 120;
+        --neutral-500: 150 150 150;
+        --neutral-600: 185 185 185;
+        --neutral-700: 212 212 212;
+        --neutral-800: 226 226 226;
+        --neutral-900: 237 237 237;
+        --accent: 247 233 181;
+        --accent-soft: 45 43 37;
+        --highlight: rgb(247 233 181 / 0.14);
+        --highlight-text: rgb(247 233 181);
+        --selection: rgb(247 233 181 / 0.3);
+    }
+
+    ::selection {
+        background: var(--selection);
+    }
+    .link-hl, .link-line, .md a {
+        text-decoration-line: underline;
+        text-decoration-color: transparent;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+        transition: color 0.2s, background-color 0.2s, text-decoration-color 0.2s;
+    }
+    .link-hl, .md a {
+        color: var(--highlight-text);
+        background-color: var(--highlight);
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+    .link-hl:hover, .md a:hover {
+        background-color: transparent;
+    }
+    .link-hl:hover, .md a:hover, a:hover > .link-line {
+        text-decoration-color: currentColor;
+    }
+    .md a {
+        padding: 0 0.15em;
+    }
+    .md strong {
+        font-weight: 600;
+        color: rgb(var(--neutral-900));
+    }
+</style>

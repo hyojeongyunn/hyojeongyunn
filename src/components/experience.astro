@@ -1,0 +1,23 @@
+---
+import experience from '@/data/experience'
+import Entry from '@/components/entry.astro'
+import { renderInline } from '@/lib/markdown'
+---
+
+<ul class="space-y-7">
+    {experience.map((item) => (
+        <Entry date={item.date}>
+            <h3 class="font-medium text-neutral-900">
+                {item.title}<span class="font-normal text-neutral-500"> · {item.org}</span>
+            </h3>
+            {item.description && (
+                <p class="md mt-1 text-[15px] leading-relaxed text-neutral-600" set:html={renderInline(item.description)} />
+            )}
+            {item.projects && (
+                <ul class="mt-1.5 list-disc space-y-1 pl-4 text-[15px] leading-relaxed text-neutral-600 marker:text-neutral-300">
+                    {item.projects.map((project) => <li class="md" set:html={renderInline(project)} />)}
+                </ul>
+            )}
+        </Entry>
+    ))}
+</ul>

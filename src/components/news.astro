@@ -1,10 +1,13 @@
 ---
-import news from '@assets/news'
+import news from '@/data/news'
+import Entry from '@/components/entry.astro'
+import { renderInline } from '@/lib/markdown'
 ---
 
-<div>
-    <h3>News</h3>
-    {news.news.map((news) => (
-        <li>{news}</li>
+<ul class="space-y-4">
+    {news.map((item) => (
+        <Entry date={item.date}>
+            <p class="md text-[15px] leading-relaxed text-neutral-700" set:html={renderInline(item.content)} />
+        </Entry>
     ))}
-</div>
+</ul>

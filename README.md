@@ -1,5 +1,5 @@
 
-My name is HyoJeong Yun.
+My name is Hyojeong Yun.
 
 - 🔭 I’m currently working on DS lab @ POSTECH.
 - 🌱 I’m currently learning vector database!

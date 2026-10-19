@@ -1,10 +1,19 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
+import tailwind from '@astrojs/tailwind'
 
-import tailwind from "@astrojs/tailwind";
+const rehypeExternalLinks = () => (tree) => {
+    const visit = (node) => {
+        if (node.tagName === 'a' && /^https?:/.test(node.properties.href)) {
+            Object.assign(node.properties, { target: '_blank', rel: ['noopener', 'noreferrer'] })
+        }
+        node.children?.forEach(visit)
+    }
+    visit(tree)
+}
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://hyojeongyunn.github.io',
-  base: 'hyojeongyunn',
-});
+    site: 'https://hyojeongyunn.github.io',
+    base: 'hyojeongyunn',
+    integrations: [tailwind()],
+    markdown: { rehypePlugins: [rehypeExternalLinks] },
+})

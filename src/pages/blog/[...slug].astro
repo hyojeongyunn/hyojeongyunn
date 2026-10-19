@@ -1,0 +1,35 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { getPosts, formatDate } from '@/lib/blog'
+import { url } from '@/lib/site'
+
+export async function getStaticPaths() {
+    return (await getPosts()).map((post) => ({ params: { slug: post.slug }, props: { post } }))
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout title={`${post.data.title} · Hyojeong Yun`} description={post.data.description}>
+    <article class="pb-16 pt-12 sm:pt-20">
+        <a href={url('blog/')} class="text-sm text-neutral-500 transition-colors hover:text-neutral-900">← Blog</a>
+        <h1 class="mt-6 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">{post.data.title}</h1>
+        <p class="mt-3 text-sm tabular-nums text-neutral-400">{formatDate(post.data.date)}</p>
+        <div class="post prose prose-neutral mt-10 max-w-none dark:prose-invert">
+            <Content />
+        </div>
+    </article>
+</Layout>
+
+<style is:global>
+    .post :not(pre) > code {
+        padding: 0.15em 0.35em;
+        border-radius: 4px;
+        background: rgb(var(--neutral-100));
+        font-weight: 500;
+    }
+    .post :not(pre) > code::before, .post :not(pre) > code::after {
+        content: none;
+    }
+</style>

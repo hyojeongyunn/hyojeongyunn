@@ -1,28 +1,15 @@
 ---
-import teaching from '@assets/teaching'
-import { marked } from 'marked'
-
-marked.setOptions({ breaks: true })
-
-const renderInlineMd = (md) => marked.parseInline(md ?? '')
+import teaching from '@/data/teaching'
+import Subsection from '@/components/subsection.astro'
+import Entry from '@/components/entry.astro'
 ---
 
-<div>
-    <h3>Teaching</h3>
-    {teaching.teaching.map((tea) => (
-        <div>
-            <div class="font-medium">
-                {tea.title} ({tea.date})
-            </div>
-            <div class="text-slate-500">
-                <ul>
-                    <li>
-                        <span set:html={renderInlineMd(tea.description)} />
-                        {tea.company && <> {' '}from {tea.company}</>}
-                    </li>
-                </ul>
-            
-            </div>
-        </div>
-    ))}
-</div>
+<Subsection title="Teaching">
+    <ul class="space-y-3">
+        {teaching.map((item) => (
+            <Entry date={item.date}>
+                <h4 class="font-medium text-neutral-900">{item.title}</h4>
+            </Entry>
+        ))}
+    </ul>
+</Subsection>

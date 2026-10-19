@@ -1,18 +1,25 @@
 ---
-import publications from '@assets/publication'
+import publications from '@/data/publications'
+import Entry from '@/components/entry.astro'
+import { newTab } from '@/lib/site'
 ---
 
-<div>
-    <h3>Publications</h3>
-    {publications.publications.map((pub) => (
-        <div>
-            <div class="font-medium">
-                {pub.title} ({pub.year})
+<ul class="space-y-8">
+    {publications.map((pub) => (
+        <Entry>
+            <span slot="aside" class="inline-block rounded bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">{pub.tag}</span>
+            <h3 class="font-medium leading-snug text-neutral-900">{pub.title}</h3>
+            <p class="mt-1.5 text-sm text-neutral-600">
+                {pub.authors.map((author, i) => (
+                    <>{i > 0 && ', '}<span class:list={{ 'font-semibold text-neutral-900': author === 'H Yun' }}>{author}</span></>
+                ))}
+            </p>
+            <p class="mt-0.5 text-sm italic text-neutral-500">{pub.venue}</p>
+            <div class="mt-3 flex flex-wrap gap-2.5">
+                {pub.links.map((link) => (
+                    <a href={link.url} {...newTab} class="link-hl px-2 py-0.5 text-xs font-medium">{link.label}</a>
+                ))}
             </div>
-            <div class="text-slate-500">
-                {pub.conference}
-                {pub.authors} 
-            </div>
-        </div>
+        </Entry>
     ))}
-</div>
+</ul>
