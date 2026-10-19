@@ -5,16 +5,16 @@ import { newTab } from '@/lib/site'
 ---
 
 <ul class="space-y-8">
-    {publications.map((pub) => (
+    {publications.map((pub, index) => (
         <Entry>
             <span slot="aside" class="inline-block rounded bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">{pub.tag}</span>
             <h3 class="font-medium leading-snug text-neutral-900">{pub.title}</h3>
             <p class="mt-1.5 text-sm text-neutral-600">
                 {pub.authors.map((author, i) => {
-                    const name = author.replace('*', '')
-                    return <>{i > 0 && ', '}<span class:list={{ 'font-semibold text-neutral-900': name === 'H Yun' }}>{name}</span>{name !== author && <sup>*</sup>}</>
+                    const [, name, mark] = author.match(/^(.*?)([*†]?)$/)!
+                    return <>{i > 0 && ', '}<span class:list={{ 'font-semibold text-neutral-900': name === 'H Yun' }}>{name}</span>{mark && <sup>{mark}</sup>}</>
                 })}
-                {pub.authors.some((author) => author.endsWith('*')) && <> (<sup>*</sup>equal contribution)</>}
+                {index === 0 && <> (<sup>*</sup>equal contribution, <sup>†</sup>corresponding author)</>}
             </p>
             <p class="mt-0.5 text-sm italic text-neutral-500">{pub.venue}</p>
             <div class="mt-3 flex flex-wrap gap-2.5">
