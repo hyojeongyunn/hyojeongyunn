@@ -8,7 +8,7 @@ export default [
     {
         title: "Graduate Researcher",
         org: "DS Lab @ POSTECH",
-        date: "2024.09 – 2026.09",
+        date: "2024.09 – Present",
         projects: [
             "Conducted research on evidence compression for multimodal RAG, released on arXiv.",
             "Cross-modal approximate nearest neighbor search.",
